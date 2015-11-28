@@ -68,7 +68,7 @@ class Lesson_14_Activity_Three {
 			goodAddress = false;
 		}
 		if (goodAddress) {
-			System.out.println(octet1 + "." + octet2 + "." + octet3 + "." + octet4);
+			System.out.println("IP Address: " + octet1 + "." + octet2 + "." + octet3 + "." + octet4);
 		}
 	}
 }
