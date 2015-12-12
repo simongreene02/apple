@@ -23,6 +23,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		String[] months = new String[]{"January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		String[] signs = new String[]{"Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"};
+		
 		int[] values = new int[]{20, 19, 21, 20, 21, 21, 23, 23, 23, 23, 22, 22};
 		System.out.println("What month were you born in? (number)");
 		int month = scanner.nextInt();
@@ -34,6 +35,9 @@ public class Main {
 		} 
 		System.out.println("Your birthday is: " + months[month-1] + " " + findDate(day));
 		System.out.println(signs[(day >= values[month-1]) ? month : month - 1]);
+		for (int i = 1; i < 32; i++){
+			System.out.print("\"" + findDate(i) + "\", ");
+		}
 	}
 	private static String findDate(int number) {
 		if (number == 1) {
@@ -96,7 +100,7 @@ public class Main {
 		if (number == 20) {
 			return "twentieth";
 		}
-		if (number > 20 || number < 30) {
+		if (number > 20 && number < 30) {
 			return "twenty-" + findDate(number - 20);
 		}
 		if (number == 30) {
