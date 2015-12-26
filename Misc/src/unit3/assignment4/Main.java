@@ -24,7 +24,6 @@ public class Main {
 			}
 			if (tweet.length() >= 7) {
 				for (int i = 0; i < tweet.length() - 6; i++) {
-					System.out.println(tweet.substring(i, i + 7));
 					if (tweet.substring(i, i + 7).equals("http://")) {
 						links++;
 					}
