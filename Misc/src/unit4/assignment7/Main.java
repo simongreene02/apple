@@ -1,5 +1,6 @@
 package unit4.assignment7;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -39,13 +40,36 @@ public class Main {
 		return arrayOut;
 	}
 	
-	private static void printBin(int [] arr) {
+	static void printBin(int [] arr) {
+//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
+//			throw new IllegalStateException(toString(arr));
+//		}
+//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 0, 0, 1, 0, 0})) {
+//			throw new IllegalStateException(toString(arr));
+//		}
+//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
+//			throw new IllegalStateException(toString(arr));
+//		}
+//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
+//			throw new IllegalStateException(toString(arr));
+//		}
+//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
+//			throw new IllegalStateException(toString(arr));
+//		}
 		for (int i:arr){
 			System.out.print(i + " ");
 		}	
 	}
 	
-	private static int[] addBin(int a[], int b[]) {
+	private static String toString(int [] arr) {
+		String output = "";
+		for (int i:arr){
+			output += i;
+		}
+		return output;
+	}
+	
+	static int[] addBin(int a[], int b[]) {
 		int[] arrayOut = new int[a.length];
 		int carrying = 0;
 		for (int i = arrayOut.length - 1; i >= 0; i--) {
