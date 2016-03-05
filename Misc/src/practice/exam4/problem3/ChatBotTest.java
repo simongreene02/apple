@@ -12,9 +12,9 @@ import org.junit.Test;
 
 public class ChatBotTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
+//	@Before
+//	public void setUp() throws Exception {
+//	}
 
 	@Test
 	public void testGreetAll() {
