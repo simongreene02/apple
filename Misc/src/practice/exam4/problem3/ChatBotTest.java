@@ -27,10 +27,12 @@ public class ChatBotTest {
 		System.setIn(bais);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(baos);
+		PrintStream originalOut = System.out;
 		System.setOut(printStream);
 		ChatBot.greetAll(bots);
 		printStream.flush();
 		printStream.close();
+		System.setOut(originalOut);
 		System.out.println(new String(baos.toByteArray()));
 	}
 
