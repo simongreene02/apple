@@ -1,5 +1,6 @@
 package practice.exam4.problem3;
 
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class ChatBot {
@@ -22,4 +23,10 @@ public abstract class ChatBot {
 	
 	public abstract String respondToGreeting(String greeting);
 	
+	public static void greetAll(List<ChatBot> bots) {
+		String input = readInput("Enter greeting:");
+		for (ChatBot i : bots) {
+			System.out.println(i.name + ": " + i.respondToGreeting(input));
+		}
+	}
 }
