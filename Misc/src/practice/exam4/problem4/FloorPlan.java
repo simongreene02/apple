@@ -22,7 +22,7 @@ public class FloorPlan {
 		COLS = room[0].length;
 	}
 
-	boolean isEmptyRegion(final int top, final int bottom, final int left, final int right) {
+	boolean isEmptyRegion(int top, int bottom, int left, int right) {
 		int trueTop = top;
 		int trueBottom = bottom;
 		int trueLeft = left;
@@ -53,11 +53,24 @@ public class FloorPlan {
 	}
 
 	public boolean fits(int width, int height, Location ulCorner) {
-		throw new UnsupportedOperationException("Not Implemented Yet");
+		System.out.println(ulCorner.getRow());
+		System.out.println(ulCorner.getRow() + height - 1);
+		System.out.println(ulCorner.getCol());
+		System.out.println(ulCorner.getCol() + width - 1);
+		return isEmptyRegion(ulCorner.getRow(), ulCorner.getRow() + height - 1, ulCorner.getCol(), ulCorner.getCol() + width - 1);
 	}
 
 	public ArrayList<Location> whereFits(int width, int height) {
-		throw new UnsupportedOperationException("Not Implemented Yet");
+		ArrayList<Location> validPositions = new ArrayList<Location>();
+		for (int row = 0; row <= ROWS - width; row++) {
+			for (int col = 0; col <= COLS - height; col++) {
+				Location location = new Location(row, col);
+				if (fits(width, height, location)) {
+					validPositions.add(location);
+				}
+			}
+		}
+		return validPositions;
 	}
 
 	int[][] getRoom() {

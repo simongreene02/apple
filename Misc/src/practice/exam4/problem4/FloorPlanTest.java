@@ -7,16 +7,33 @@ import org.junit.Test;
 
 public class FloorPlanTest {
 	private FloorPlan floorPlan;
+
 	@Before
 	public void setUp() throws Exception {
-		int [][] data = new int[5][5];
-		data[0] = new int[]{0,0,1,0,0};
-		data[0] = new int[]{0,1,0,1,0};
-		data[0] = new int[]{0,1,0,1,0};
-		data[0] = new int[]{1,0,0,0,1};
-		data[0] = new int[]{1,0,0,0,1};
+		int[][] data = new int[5][5];
+		data[0] = new int[] { 0, 0, 1, 0, 0 };
+		data[1] = new int[] { 0, 1, 0, 1, 0 };
+		data[2] = new int[] { 0, 0, 0, 0, 0 };
+		data[3] = new int[] { 1, 0, 0, 0, 0 };
+		data[4] = new int[] { 1, 0, 0, 0, 0 };
 
 		floorPlan = new FloorPlan(data);
+	}
+	
+	@Test
+	public void whereFits_tinyObject_lengthOf20() {
+		assertEquals(6, floorPlan.whereFits(1, 1).size());
+		assertEquals("", floorPlan.whereFits(1, 1));
+	}
+	
+	@Test
+	public void fits_bigTopRightBottomWithoutOnes_doesFit() {
+		assertTrue(floorPlan.fits(3, 2, new Location(3, 2)));
+	}
+
+	@Test
+	public void fits_topRightBottomWithOnes_dosntFit() {
+		assertFalse(floorPlan.fits(1, 3, new Location(2, 0)));
 	}
 
 	@Test
@@ -55,17 +72,27 @@ public class FloorPlanTest {
 	public void isEmptyRegion_topLeftRight() {
 		FloorPlan floorPlan = new FloorPlan(8, 9);
 		int[][] room = floorPlan.getRoom();
-		assertTrue(floorPlan.isEmptyRegion(7, 8, 1, 4));
+		assertTrue(floorPlan.isEmptyRegion(6, 7, 1, 4));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void initalization_empty() {
 		new FloorPlan(new int[0][0]);
 	}
-	
+
 	@Test
-	public void isEmptyRegion_topRightBottomWithOnes() {
+	public void isEmptyRegion_topRightBottomWithOnes_notEmpty() {
 		assertFalse(floorPlan.isEmptyRegion(2, 3, 0, 3));
+	}
+
+	@Test
+	public void isEmptyRegion_topRightBottomWithOnes_isEmpty() {
+		assertTrue(floorPlan.isEmptyRegion(3, 4, 2, 3));
+	}
+
+	@Test
+	public void fits_topRightBottomWithOnes_doesFit() {
+		assertTrue(floorPlan.fits(1, 1, new Location(3, 2)));
 	}
 
 }
