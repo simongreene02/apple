@@ -1,6 +1,11 @@
 package practice.exam4.problem4;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +27,16 @@ public class FloorPlanTest {
 	
 	@Test
 	public void whereFits_tinyObject_lengthOf20() {
+//		ImmutableList l = ImmutableList.of(Location.builder().row().col().build(),);
+		List<Location> expectedLocations = new ArrayList();
+		expectedLocations.add(new Location(3,2));
+		expectedLocations.add(new Location(3,3));
+		expectedLocations.add(new Location(3,4));
+		expectedLocations.add(new Location(4,2));
+		expectedLocations.add(new Location(4,3));
+		expectedLocations.add(new Location(4,4));
 		assertEquals(6, floorPlan.whereFits(1, 1).size());
-		assertEquals("", floorPlan.whereFits(1, 1));
+		assertEquals(expectedLocations, floorPlan.whereFits(1, 1));
 	}
 	
 	@Test

@@ -17,4 +17,29 @@ public class Location {
 	public String toString() {
 		return "Location [row=" + row + ", col=" + col + "]";
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + col;
+		result = prime * result + row;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Location)) {
+			return false;
+		}
+		Location other = (Location) obj;
+		if (col != other.col) {
+			return false;
+		}
+		if (row != other.row) {
+			return false;
+		}
+		return true;
+	}
 }
