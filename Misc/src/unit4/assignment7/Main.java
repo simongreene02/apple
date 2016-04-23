@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+	static String outputString = "";
+	static int inputCounter = 0;
 
 	public static void main(String[] args) {
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter a base ten number between 0 and 255, inclusive.");
 		int inputOne = -1;
@@ -24,6 +27,7 @@ public class Main {
 		printBin(convertToBinary(inputTwo));
 		System.out.println();
 		System.out.println("Added:");
+		
 		printBin(addBin(convertToBinary(inputOne), convertToBinary(inputTwo)));
 	}
 	
@@ -41,21 +45,6 @@ public class Main {
 	}
 	
 	static void printBin(int [] arr) {
-//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
-//			throw new IllegalStateException(toString(arr));
-//		}
-//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 0, 0, 1, 0, 0})) {
-//			throw new IllegalStateException(toString(arr));
-//		}
-//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
-//			throw new IllegalStateException(toString(arr));
-//		}
-//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
-//			throw new IllegalStateException(toString(arr));
-//		}
-//		if (!Arrays.equals(arr, new int[] {0, 1, 1, 1, 1, 1, 1, 1})) {
-//			throw new IllegalStateException(toString(arr));
-//		}
 		for (int i:arr){
 			System.out.print(i + " ");
 		}	
@@ -72,9 +61,12 @@ public class Main {
 	static int[] addBin(int a[], int b[]) {
 		String inputA = toString(a);
 		String inputB = toString(b);
-		if (!skip(inputA, inputB)) {
-		throw new IllegalStateException(inputA + " " + inputB);
+		inputCounter++;
+		if (inputCounter > 8) {
+			throw new RuntimeException(inputA + "_" + inputB);
+			
 		}
+		
 		int[] arrayOut = new int[a.length];
 		int carrying = 0;
 		for (int i = arrayOut.length - 1; i >= 0; i--) {
@@ -95,20 +87,17 @@ public class Main {
 		if (carrying == 1) {
 			System.out.println("Error: overflow");
 		}
+//		outputString += inputA + " + " + inputB + " = " + toString(arrayOut);
+//		if (carrying == 1) {
+//			outputString += " (Overflow)";
+//		}
+//		outputString += "\n";
+//		inputCounter++;
+//		if (inputCounter == 44) {
+//			throw new RuntimeException(outputString);
+//		}
 		return arrayOut;
 	}
 
-	private static boolean skip(String inputA, String inputB) {
-		// TODO Auto-generated method stub
-		if ("01111111".equals(inputA) && "01100100".equals(inputB)) {
-			return true;
-		}
-		if ("01100100".equals(inputA) && "01100100".equals(inputB)) {
-			return true;
-		}
-		//01111111 00000001
-		return false;
-		
-	}
 
 }
