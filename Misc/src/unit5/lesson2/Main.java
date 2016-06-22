@@ -1,4 +1,4 @@
-package unit5.lesson1.activity1;
+package unit5.lesson2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,12 +14,10 @@ public class Main {
 			outputList.add(input);
 			input = scanner.next();
 		}
-		System.out.println(outputList.size());
-		System.out.println(outputList);
-		if (outputList.size() > 2) {
-			outputList.remove(0);
-			outputList.remove(outputList.size() - 1);
-			System.out.println(outputList);
+		for (String word : outputList) {
+			if (word.contains("a")) {
+				System.out.println(word);
+			}
 		}
 	}
 
