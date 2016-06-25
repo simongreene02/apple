@@ -1,4 +1,4 @@
-package unit5.assignment2.part1;
+package unit5.assignment2;
 
 /*
  * AP CS MOOC
