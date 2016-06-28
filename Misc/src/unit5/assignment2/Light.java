@@ -1,5 +1,7 @@
 package unit5.assignment2;
 
+import java.util.Objects;
+
 /*
  * AP CS MOOC
  * Term 2 - Assignment 2, Part 1: Light
@@ -237,5 +239,35 @@ public class Light {
 			output = "FAIL: toString does not work as expected";
 		}
 		return output + " (" + light.toString() + ")";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(on, burntOut, color);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Light))
+			return false;
+		Light other = (Light) obj;
+		if (burntOut != other.burntOut)
+			return false;
+		if (color == null) {
+			if (other.color != null)
+				return false;
+		} else if (!color.equals(other.color))
+			return false;
+		if (on != other.on)
+			return false;
+		return true;
+	}
+
+	boolean isBurntOut() {
+		return burntOut;
 	}
 }
