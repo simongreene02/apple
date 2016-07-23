@@ -65,5 +65,34 @@ public class LinkedList {
 		}
 		System.out.println(outputString);
 	}
+	
+	/**
+	 * Delete the first node which matches with {@link value}
+	 * @param value The value that will be removed from the list.
+	 * @return {@code true} if the specified value is deleted from the list. {@code false} otherwise.
+	 */
+	public boolean delete(String value) {
+		if (head == null) {
+			return false;
+		}
+		if (head.getValue().equals(value)) {
+			head = head.getNext();
+			return true;
+		}
+		
+		Node node = head.getNext();
+		Node previousNode = head;
+		while (node != null) {
+			if (node.getValue().equals(value)) {
+				previousNode.setNext(node.getNext());
+				return true;
+			}
+			previousNode = node;
+			node = node.getNext();
+		}
+		
+		return false;
+		
+	}
 
 }
