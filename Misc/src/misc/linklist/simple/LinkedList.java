@@ -94,5 +94,29 @@ public class LinkedList {
 		return false;
 		
 	}
+	
+	public int size() {
+		int listSize = 0;
+		Node node = head;
+		while (node != null) {
+			listSize++;
+			node = node.getNext();
+		}
+		return listSize;
+	}
+	
+	public boolean contains(String inputValue) {
+		if (inputValue == null) {
+			throw new IllegalArgumentException("Do not pass a null.");
+		}
+		Node node = head;
+		while (node != null) {
+			if (inputValue.equals(node.getValue())) {
+				return true;
+			}
+			node = node.getNext();
+		}
+		return false;
+	}
 
 }

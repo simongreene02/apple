@@ -23,4 +23,16 @@ public class NodeTest {
 		assertNull(node2.getNext());
 	}
 
+	@Test
+	public void equality() {
+		Node node1 = new Node("ABC");
+		Node node2 = new Node("ABC");
+		assertEquals(node1, node2);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void nullNode_error() {
+		new Node(null);
+	}
+
 }

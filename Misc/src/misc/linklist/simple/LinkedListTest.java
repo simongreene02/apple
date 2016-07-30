@@ -1,9 +1,6 @@
 package misc.linklist.simple;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -74,6 +71,105 @@ public class LinkedListTest {
 	public void add_withoutHead() {
 		list.add(" ");
 		assertEquals(" ", list.getHead().getValue());
+	}
+	
+	@Test
+	public void size_empty() {
+		assertEquals(0, list.size());
+	}
+	
+	@Test
+	public void size_3items() {
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		assertEquals(3, list.size());
+	}
+	
+	@Test
+	public void delete_null() {
+		assertFalse(list.delete(null));
+	}
+	
+	@Test
+	public void delete_wrongValue() {
+		list.add("a");
+		assertFalse(list.delete("b"));
+		assertEquals(1, list.size());
+	}
+	
+	@Test
+	public void delete_rightValueHead() {
+		list.add("a");
+		list.add("b");
+		assertTrue(list.delete("a"));
+		assertEquals(1, list.size());
+	}
+	
+	@Test
+	public void delete_rightValueLeaf() {
+		list.add("a");
+		list.add("b");
+		assertTrue(list.delete("b"));
+		assertEquals(1, list.size());
+	}
+	
+	@Test
+	public void delete_rightValueMiddle() {
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		assertTrue(list.delete("b"));
+		assertEquals(2, list.size());
+	}
+	
+	@Test
+	public void delete_duplicates() {
+		list.add("a");
+		list.add("a");
+		list.add("a");
+		assertTrue(list.delete("a"));
+		assertEquals(2, list.size());
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void contains_nullInput() {
+		list.contains(null);
+	}
+	
+	@Test
+	public void contains_notFound() {
+		assertFalse(list.contains("a"));
+	}
+	
+	@Test
+	public void contains_found() {
+		list.add("a");
+		assertTrue(list.contains("a"));
+	}
+	
+	@Test
+	public void contains_foundLeaf() {
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		assertTrue(list.contains("c"));
+	}
+	
+	@Test
+	public void contains_foundHead() {
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		assertTrue(list.contains("a"));
+	}
+	
+	@Test
+	public void contains_foundMiddle() {
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		assertTrue(list.contains("b"));
 	}
 
 }
